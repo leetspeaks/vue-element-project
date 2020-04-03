@@ -3,7 +3,7 @@
   <el-header class="header">
       <el-row>
         <el-col :span="22"><div class="grid-content bg-purple"><h3>Vue后台管理系统</h3></div></el-col>
-        <el-col :span="2"><div class="grid-content bg-purple-light"><a href="#" class="loginout">退出</a></div></el-col>
+        <el-col :span="2"><div class="grid-content bg-purple-light"><a href="#" @click="handleLoginout" class="loginout">退出</a></div></el-col>
       </el-row>
   </el-header>
   <el-container>
@@ -99,6 +99,13 @@ export default {
   beforeCreate () {
     const token = localStorage.getItem('token')
     if (!token) {
+      this.$router.push({ name: 'login' })
+    }
+  },
+  methods: {
+    handleLoginout () {
+      localStorage.clear()
+      this.$message.success('退出成功')
       this.$router.push({ name: 'login' })
     }
   }
