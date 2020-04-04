@@ -17,7 +17,7 @@
       </el-row>
       <!-- 表格 -->
       <el-table
-    :data="tableData"
+    :data="userList"
     style="width: 100%">
     <el-table-column
       label="#"
@@ -25,29 +25,45 @@
       width="60">
     </el-table-column>
     <el-table-column
-      prop="name"
+      prop="username"
       label="姓名"
       width="80">
     </el-table-column>
     <el-table-column
-      prop="address"
+      prop="email"
       label="邮箱">
     </el-table-column>
     <el-table-column
-      prop="address"
+      prop="mobile"
       label="电话">
     </el-table-column>
+
     <el-table-column
-      prop="address"
       label="创建日期">
+      <template slot-scope='scope'>
+        {{scope.row.create_time | fmtdate}}
+      </template>
     </el-table-column>
+
     <el-table-column
-      prop="address"
       label="用户状态">
+      <template slot-scope="scope">
+        <el-switch
+          v-model="scope.row.mg_state"
+          active-color="#13ce66"
+          inactive-color="#ff4949">
+        </el-switch>
+      </template>
     </el-table-column>
+
     <el-table-column
       prop="address"
       label="操作">
+      <template>
+        <el-button size="mini" plain type="primary" icon="el-icon-edit" circle></el-button>
+        <el-button size="mini" plain type="success" icon="el-icon-check" circle></el-button>
+        <el-button size="mini" plain type="danger" icon="el-icon-delete" circle></el-button>
+      </template>
     </el-table-column>
   </el-table>
   </el-card>
@@ -57,25 +73,10 @@ export default {
   data () {
     return {
       query: '',
+      userList: [],
+      total: -1,
       pagenum: 1,
-      pagesize: 2,
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      pagesize: 2
     }
   },
   created () {
@@ -87,6 +88,14 @@ export default {
       this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
       const res = await this.$http.get(`users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`)
       console.log(res)
+      const {meta:{status,msg},data:{total,users}} = res.data
+      if (status === 200) {
+        this.userList = users
+        this.total = total
+        this.$message.success(msg)
+      }else{
+        this.$message.error(msg)
+      }
     }
   }
 }
