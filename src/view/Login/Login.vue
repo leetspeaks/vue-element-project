@@ -27,7 +27,7 @@ export default {
   methods: {
     async handleLogin () {
       const res = await this.$http.post('login', this.formLogin)
-      console.log(res)
+      // console.log(res)
       const { data, meta: { msg, status } } = res.data
       if (status === 200) {
         // 保存token

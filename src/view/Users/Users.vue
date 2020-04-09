@@ -1,11 +1,12 @@
 <template>
   <el-card class="box-card">
       <!-- 面包屑 -->
-      <el-breadcrumb separator-class="el-icon-arrow-right">
+      <!-- <el-breadcrumb separator-class="el-icon-arrow-right">
         <el-breadcrumb-item>首页</el-breadcrumb-item>
         <el-breadcrumb-item>用户管理</el-breadcrumb-item>
         <el-breadcrumb-item>用户列表</el-breadcrumb-item>
-      </el-breadcrumb>
+      </el-breadcrumb> -->
+      <my-bread lv1="用户管理" lv2="用户列表"></my-bread>
       <!-- 搜索框 -->
       <el-row class="search-row">
           <el-col :span="8">
@@ -269,8 +270,8 @@ export default {
       },
       // 获取表格数据
     async getUserList () {
-      const AUTH_TOKEN = localStorage.getItem('token')
-      this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
+      // const AUTH_TOKEN = localStorage.getItem('token')
+      // this.$http.defaults.headers.common['Authorization'] = AUTH_TOKEN
       const res = await this.$http.get(`users?query=${this.query}&pagenum=${this.pagenum}&pagesize=${this.pagesize}`)
       // console.log(res)
       const {meta:{status,msg},data:{total,users}} = res.data
@@ -290,7 +291,7 @@ export default {
 .box-card{
     height: 100%;
 }
-.search-row{
+/* .search-row{
     margin-top: 15px;
-}
+} */
 </style>
