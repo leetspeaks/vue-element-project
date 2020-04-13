@@ -14,7 +14,7 @@
                 <el-button @click="searhUser" slot="append" icon="el-icon-search"></el-button>
               </el-input>
           </el-col>
-          <el-button @click="showUserAdd" type="success" plain>添加用户</el-button>
+          <el-button @click="showUserAdd" type="primary">添加用户</el-button>
       </el-row>
       <!-- 表格 -->
       <el-table
@@ -62,9 +62,9 @@
       prop="address"
       label="操作">
       <template slot-scope="scope">
-        <el-button @click="showUserEdit(scope.row)" size="mini" plain type="primary" icon="el-icon-edit" circle></el-button>
-        <el-button @click="showSetUsers(scope.row)" size="mini" plain type="success" icon="el-icon-check" circle></el-button>
-        <el-button @click="deteteUsers(scope.row.id)" size="mini" plain type="danger" icon="el-icon-delete" circle></el-button>
+        <el-button @click="showUserEdit(scope.row)" size="mini" type="primary" icon="el-icon-edit"></el-button>
+        <el-button @click="showSetUsers(scope.row)" size="mini" type="success" icon="el-icon-check"></el-button>
+        <el-button @click="deteteUsers(scope.row.id)" size="mini" type="danger" icon="el-icon-delete"></el-button>
       </template>
     </el-table-column>
   </el-table>

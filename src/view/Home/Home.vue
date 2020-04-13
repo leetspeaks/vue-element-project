@@ -57,7 +57,7 @@ export default {
   methods: {
     async getMenus(){
       const res = await this.$http.get('menus')
-      console.log(res)
+      // console.log(res)
       this.menus = res.data.data
     },
     handleLoginout () {

@@ -5,7 +5,7 @@
     <!-- 添加角色按钮 -->
     <el-row>
       <el-col>
-        <el-button type="success" plain>添加用户</el-button>
+        <el-button type="primary" plain>添加用户</el-button>
       </el-col>
     </el-row>
     <!-- 表格 -->
@@ -38,28 +38,16 @@
       <el-table-column prop="address" label="操作">
         <template slot-scope="scope">
           <el-button
-            @click="showUserEdit(scope.row)"
-            size="mini"
-            plain
-            type="primary"
-            icon="el-icon-edit"
-            circle
-          ></el-button>
-          <el-button
             @click="showSetRights(scope.row)"
             size="mini"
-            plain
-            type="success"
-            icon="el-icon-check"
-            circle
+            type="primary"
+            icon="el-icon-edit"
           ></el-button>
           <el-button
             @click="deteteUsers(scope.row.id)"
             size="mini"
-            plain
             type="danger"
             icon="el-icon-delete"
-            circle
           ></el-button>
         </template>
       </el-table-column>
