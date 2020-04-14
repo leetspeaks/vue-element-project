@@ -10,6 +10,9 @@ import GoodsAdd from '@/view/Goods/GoodsAdd.vue'
 import GoodsParams from '@/view/Goods/GoodsParams.vue'
 import GoodsCate from '@/view/Goods/GoodsCate.vue'
 import Order from '@/view/Order/Order.vue'
+import Reports from '@/view/Reports/Reports.vue'
+
+
 
 
 import ElementUI, { Message } from 'element-ui'
@@ -38,8 +41,8 @@ const routes = [
       { path: '/goods/add', name: 'goodsAdd', component: GoodsAdd },
       { path: '/params', name: 'goodsParams', component: GoodsParams },
       { path: '/categories', name: 'goodsCate', component: GoodsCate },
-      { path: '/orders', name: 'orders', component: Order }
-
+      { path: '/orders', name: 'orders', component: Order },
+      { path: '/reports', name: 'reports', component: Reports }
     ]
   }
 ]
